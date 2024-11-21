@@ -1,6 +1,7 @@
 # Jet-Gophering
 
 ![Jet Gopher](/static/jet_gopher.png)
+
 Thank you ChatGPT for the image.
 
 I started this project on the tails of Tiago's mini-project showing how good the http standard library is and that frameworks aren't strictly necessary in Go.
