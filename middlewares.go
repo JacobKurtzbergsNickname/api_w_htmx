@@ -72,6 +72,18 @@ func EmojiMiddleware(next http.Handler) http.HandlerFunc {
 	})
 }
 
+func RequireAuthMiddleware(next http.Handler) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		token := r.Header.Get("Authorization")
+		if token != "Bearer token" {
+			http.Error(w, "Unauthorized", http.StatusUnauthorized)
+			return
+		}
+
+		next.ServeHTTP(w, r)
+	}
+}
+
 type Middleware func(http.Handler) http.HandlerFunc
 
 func ChainMiddleware(middlewares ...Middleware) Middleware {

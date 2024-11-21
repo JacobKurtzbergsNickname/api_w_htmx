@@ -1,0 +1,5 @@
+{{extends "../layouts/app.jet"}}
+
+{{block documentBody()}}
+  <h2 class="center">Index</h2>
+{{end}}

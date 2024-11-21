@@ -47,6 +47,10 @@ func (s *APIServer) InitRouter() *http.ServeMux {
 		method := route.method
 		router.HandleFunc(path, method)
 	}
+
+	// Serve static files (CSS, JS, images, favicon, etc.)
+	fs := http.FileServer(http.Dir("./static"))
+	router.Handle("/static/", http.StripPrefix("/static/", fs))
 	return router
 }
 
@@ -88,10 +92,6 @@ func (s *APIServer) Run() error {
 	// Initialize the middleware chain
 	handler := s.InitMiddleware(router)
 
-	// Versioning the API
-	v1 := http.NewServeMux()
-	v1.Handle("/api/v1", http.StripPrefix("/api/v1", router))
-
 	server := http.Server{
 		Addr:    s.addr,
 		Handler: handler,
@@ -99,16 +99,4 @@ func (s *APIServer) Run() error {
 
 	log.Printf("Starting server on %s", s.addr)
 	return server.ListenAndServe()
-}
-
-func RequireAuthMiddleware(next http.Handler) http.HandlerFunc {
-	return func(w http.ResponseWriter, r *http.Request) {
-		token := r.Header.Get("Authorization")
-		if token != "Bearer token" {
-			http.Error(w, "Unauthorized", http.StatusUnauthorized)
-			return
-		}
-
-		next.ServeHTTP(w, r)
-	}
 }

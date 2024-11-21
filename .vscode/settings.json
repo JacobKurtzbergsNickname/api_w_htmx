@@ -1,0 +1,8 @@
+{
+    "emmet.includeLanguages": {
+        "jet": "html"
+    },
+    "material-icon-theme.files.associations": {
+        "*.jet": "html"
+    }
+}

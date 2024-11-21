@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>{{ isset(title) ? title : "Jet-Gophering" }}</title>
+    <link rel="icon" type="image/png" href="/static/jet_gopher.png">
+    <link rel="stylesheet" href="/static/styles/index.css">
+  </head>
+  <body>
+    {{ include "../partials/header.jet" }}
+    {{ block documentBody()}}{{end}}
+    {{ include "../partials/footer.jet" }}
+  </body>
+</html>
