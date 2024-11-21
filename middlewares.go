@@ -4,6 +4,7 @@ import (
 	"context"
 	"math/rand"
 	"net/http"
+	"strings"
 	"time"
 )
 
@@ -15,6 +16,12 @@ func LoggingMiddleware(tl *TableLogger) Middleware {
 			emoji, ok := r.Context().Value(emojiKey).(string)
 			if !ok || emoji == "" {
 				emoji = "🤷‍♂️" // Default shrugging man emoji if not found
+			}
+
+			// Skip any requests to the static files in logging
+			if strings.Contains(r.URL.Path, "/static/") {
+				next.ServeHTTP(w, r)
+				return
 			}
 
 			// Log the request details along with the emoji
@@ -31,10 +38,10 @@ func LoggingMiddleware(tl *TableLogger) Middleware {
 func EmojiMiddleware(next http.Handler) http.HandlerFunc {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		// Seed the random number generator
-		rand.Seed(time.Now().UnixNano())
+		randomNumber := rand.New(rand.NewSource(time.Now().UnixNano()))
 
 		// 10% chance to skip time-based emoji assignment
-		skip := rand.Intn(100) < 10 // 10% probability
+		skip := randomNumber.Intn(100) < 10 // 10% probability
 
 		var emoji string
 
