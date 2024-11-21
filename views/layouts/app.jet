@@ -7,8 +7,10 @@
     <link rel="stylesheet" href="/static/styles/index.css">
   </head>
   <body>
-    {{ include "../partials/header.jet" }}
-    {{ block documentBody()}}{{end}}
-    {{ include "../partials/footer.jet" }}
+    <div class="wrapper">
+      {{ include "../partials/header.jet" }}
+      {{ block documentBody()}}{{end}}
+      {{ include "../partials/footer.jet" }}
+    </div>
   </body>
 </html>

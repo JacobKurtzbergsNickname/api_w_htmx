@@ -1,9 +1,59 @@
-body {
-  background-color: #f0f0f0;
+/* Reset margins and paddings for consistency */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%; /* Ensure the body takes up the full viewport height */
+  background-color: #000;
   font-family: Arial, sans-serif;
+  color: #fff;
+}
+
+main {
+  flex: 1; /* Push the footer to the bottom by taking up remaining space */
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  min-height: 100vh;      /* Ensure wrapper is at least the height of the viewport */
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 1vh;
 }
 
 .center {
   display: flex;
   justify-content: center;
 }
+
+.sticky-footer {
+  top: 100%;
+  /* background-color: #6d6c6c; */
+  background-color: #1386bb;
+  padding: 10px;
+  text-align: center;
+}
+
+.margin-top {
+  margin-top: 20px;
+}
+
+header.sticky-header {
+  position: sticky;
+  top: 0; /* Stick to the top of the viewport */
+  background-color: #1386bb;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  z-index: 10; /* Ensure it stays above other content */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for visibility */
+}
+
