@@ -5,6 +5,14 @@
     <title>{{ isset(title) ? title : "Jet-Gophering" }}</title>
     <link rel="icon" type="image/png" href="/static/jet_gopher.png">
     <link rel="stylesheet" href="/static/styles/index.css">
+    <link rel="stylesheet" href="/static/styles/card.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nosifer&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Nosifer', cursive;
+      }
+    </style>
   </head>
   <body>
     <div class="wrapper">
