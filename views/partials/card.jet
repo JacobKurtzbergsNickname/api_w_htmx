@@ -1,9 +1,9 @@
 {{block card(name, category, image)}}
-  <div class="card">
-    <img classs="card-img" src="{{ image }}" alt="Avatar">
-    <div class="container">
-      <h4><b> {{ name }} </b></h4>
-      <p> {{category}} </p>
+  <div class="w-full max-w-lg mx-auto bg-white shadow-md rounded-lg overflow-hidden transition-shadow duration-300 hover:shadow-lg mt-4 h-96 md:w-[670px] md:h-[800px]">
+    <img class="w-full h-4/5 object-cover rounded-t-lg md:h-4/5" src="{{ image }}" alt="Avatar">
+    <div class="p-4 h-1/5">
+      <h4 class="font-bold text-lg mb-2"> {{ name }} </h4>
+      <p class="text-gray-700"> {{ category }} </p>
     </div>
   </div>
 {{end}}

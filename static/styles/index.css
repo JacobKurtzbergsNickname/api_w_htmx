@@ -12,12 +12,9 @@ body, html {
   color: #fff;
 }
 
-body {
-  background: linear-gradient(to bottom, #0F380F, #8BAC0F);
-}
-
 main {
   flex: 1; /* Push the footer to the bottom by taking up remaining space */
+  background: linear-gradient(to bottom, #8BAC0F,  #0F380F);
 }
 
 .wrapper {

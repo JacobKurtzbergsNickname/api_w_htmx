@@ -4,6 +4,8 @@
 {{block documentBody()}}
   <h1 class="text-center mt-4 text-4xl" style="color: #8BAC0F">Lovecraft Creatures</h1>
   <main class="center margin-top content text-black">
-    {{yield card(name="'umr at-tawill", category="Great Old One", image="https://lovecraftapirest.fly.dev/api/images/'umr-at-tawil.jpg")}}
+    {{range id, creature := . }}
+      {{yield card(name=creature.Name, category=creature.Category,image=creature.Image)}}
+    {{end}}
   </main>
 {{end}}
